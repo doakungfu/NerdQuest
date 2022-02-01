@@ -18,6 +18,6 @@ Additional features:
 4. Responsive design
 
 Team member roles:
-David Allen - 
-Kevin Gardner -
-Marki Lyons - 
+1. David Allen - Make the create events and edit events pages for the events app
+2. Kevin Gardner - login and registration; create game event form
+3. Marki Lyons - homepage design; avatar upload
