@@ -1,7 +1,9 @@
+from pydoc import importfile
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
-import bcrypt
+import bcrypt   
+
 
 def index(request):
     return render(request, 'workouts/index.html')
@@ -41,3 +43,15 @@ def logout(request):
     request.session.flush()
 
     return redirect('/')
+
+def all_games(request):
+     
+    context = {
+        'all_games': Game.objects.exclude(created_by='user.first.name')
+    }
+    return render(request, 'all_games.html', context)
+
+def games(request):
+    context = {
+       'games' : Game.objects.filter(created_by='user.first.name')
+    }

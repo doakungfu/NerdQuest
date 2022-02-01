@@ -1,7 +1,10 @@
 from django.db import models
-import re, bcrypt
+import re
+import bcrypt
 
-EMAIL_REGEX = re.compile('^[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,4})$')
+EMAIL_REGEX = re.compile(
+    '^[_a-z0-9-]+(.[_a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)(.[a-z]{2,4})$')
+
 
 class UserManager(models.Manager):
     def register_validator(self, postData):
@@ -20,7 +23,7 @@ class UserManager(models.Manager):
         elif check:
             errors['reg_email'] = "Email address is already registered."
         return errors
-    
+
     def login_validator(self, postData):
         errors = {}
         check = User.objects.filter(email=postData['login_email'])
@@ -31,6 +34,7 @@ class UserManager(models.Manager):
                 errors['login_email'] = "Email and password do not match."
         return errors
 
+
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -40,3 +44,18 @@ class User(models.Model):
     updated_at = models.DateField(auto_now=True)
 
     objects = UserManager()
+
+class Game(models.Model):
+    type = models.CharField(max_length=255)
+    date = models.DateField(auto_now_add=True)
+    start = models.TimeField()
+    end = models.TimeField()
+    location = models.CharField(max_length=255)
+    notes = models.TextField(max_length=2500)
+    created_by=models.CharField
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Type of Game: {self.type}"
