@@ -55,3 +55,5 @@ def games(request):
     context = {
        'games' : Game.objects.filter(created_by='user.first.name')
     }
+    return render(request, 'games.html', context)
+    
