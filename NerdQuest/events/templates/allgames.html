@@ -27,7 +27,9 @@
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Location</th>
+                    <th>Created By</th>
                     <th>Notes</th>
+
                 </tr>
                 {% for game in all_games %}
                 <tr>
@@ -37,14 +39,13 @@
                     <td>{{game.start}}</td>
                     <td>{{game.end}}</td>
                     <td>{{game.location}}</td>
+                    <td>{{game.created_by}}</td>
                     <td>{{game.notes}}</td>
-                    <td><a href="/shows/{{show.id}}">Show</a> <a href="/shows/{{show.id}}/edit">Edit</a> <a href="/shows/{{show.id}}/destroy">Delete</a></td>
-
-                </tr>
+                 </tr>
                 {% endfor %}
             </table>
 
-            <a href="/shows/new">Add A New Show</a>
+            <a href="/games/new">Add A New Game</a>
         </div>
 
     </body>
