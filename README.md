@@ -18,6 +18,6 @@ Additional features:
 4. Responsive design
 
 Team member roles:
-David Allen - 
-Kevin Gardner -
-Marki Lyons - 
+David Allen - Backend
+Kevin Gardner - Backend
+Marki Lyons - Frontend
