@@ -59,6 +59,10 @@ def games(request):
     }
     return render(request, 'games.html', context)
 
+def new_game(request):
+    return render(request, 'add_game.html')
+
+    
 # def create_game(request):
 #     errors = Game.objects.game_validator(request.POST)
 

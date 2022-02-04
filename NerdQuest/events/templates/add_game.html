@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+    <title>Organize a game</title>
+</head>
+
+<body>
+    {% if messages %}
+    <div class=container>
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+    </div>
+    {%endif%}
+    <header style="position: relative; display: flex;">
+        <h1>Hello {{user.first_name}}! Organize a Game!</h1>
+    <h5><a href="/logout">Logout</a></h5>
+
+    </header>
+    
+    <form class = 'card p-3 bg-light' action="/create_trip" method="POST">
+        {% csrf_token %}
+
+        <label for="dest">Type of Game:</label>
+        <input type="text" name='destination' id="dest">
+
+        <p></p>
+        <label for="start_dates">Start Date:</label>
+        <input type="date" name="start_date" id="start_dates">
+
+        <p></p>
+        <label for="end_dates">End Date:</label>
+        <input type="date" name="end_date" id="end_dates">
+
+        <label for="plan">Notes:</label>
+        <input type="text" name='plan' id="plan">
+
+        <a href="/travels">Cancel</a>
+        
+        <input type="submit" value="Submit">
+
+    </form>
+</body>
+
+</html>
