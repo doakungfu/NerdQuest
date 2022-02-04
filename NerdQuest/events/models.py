@@ -52,7 +52,7 @@ class Game(models.Model):
     end = models.TimeField()
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    created_by=models.CharField
+    creator = models.ForeignKey(User, related_name="has_created_workouts", on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
