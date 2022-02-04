@@ -24,7 +24,7 @@ def register(request):
         )
         request.session['user_id'] = user.id
         request.session['greeting'] = user.first_name
-        return redirect('/workouts')
+        return redirect('/allgames')
 
 def login(request):
     errors = User.objects.login_validator(request.POST)
@@ -37,7 +37,7 @@ def login(request):
         user = User.objects.get(email=request.POST['login_email'])
         request.session['user_id'] = user.id
         request.session['greeting'] = user.first_name
-        return redirect('/workouts')
+        return redirect('/allgames')
 
 def logout(request):
     request.session.flush()
@@ -56,4 +56,29 @@ def games(request):
        'games' : Game.objects.filter(created_by='user.first.name')
     }
     return render(request, 'games.html', context)
+
+def create_game(request):
+    errors = Game.objects.game_validator(request.POST)
+
+    if len(errors):
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/allgames')
+    else:
+        user = User.objects.get(id=request.session["user_id"])
+        game = Game.objects.create(
+            type = request.POST['title'],
+            date = request.POST['date'],
+            start = request.POST['start'],
+            end = request.POST['end'],
+            location = request.POST['end'],
+            end = request.POST['end'],
+            notes = request.POST['notes'],
+            created_by = user
+            
+        )
+        # bonus: the workout creator automatically favorites the workout
+        user.favorited_workouts.add(workout)
+
+        return redirect(f'/games/{game.id}')
     

@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+SECRET_KEY = 'django-insecure-(a-88r$96ivkfluj9u_2f&72rt3joac1rhb0!r^3)5#sgjg#1r'
