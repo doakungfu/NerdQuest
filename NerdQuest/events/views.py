@@ -6,7 +6,7 @@ import bcrypt
 
 
 def index(request):
-    return render(request, 'workouts/index.html')
+    return render(request, 'index.html')
 
 def register(request):
     errors = User.objects.register_validator(request.POST)
