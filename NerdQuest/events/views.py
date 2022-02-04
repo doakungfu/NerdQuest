@@ -44,12 +44,14 @@ def logout(request):
 
     return redirect('/')
 
-def all_games(request):
+# def all_games(request):
      
-    context = {
-        'all_games': Game.objects.exclude(created_by='user.first.name')
-    }
-    return render(request, 'all_games.html', context)
+#     context = {
+#         'all_games': Game.objects.exclude(created_by='user.first.name')
+#     }
+#     return render(request, 'all_games.html', context)
+def all_games(request):
+    return render(request, 'all_games.html')
 
 def games(request):
     context = {
