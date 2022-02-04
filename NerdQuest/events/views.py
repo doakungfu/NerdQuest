@@ -57,28 +57,28 @@ def games(request):
     }
     return render(request, 'games.html', context)
 
-def create_game(request):
-    errors = Game.objects.game_validator(request.POST)
+# def create_game(request):
+#     errors = Game.objects.game_validator(request.POST)
 
-    if len(errors):
-        for key, value in errors.items():
-            messages.error(request, value)
-        return redirect('/allgames')
-    else:
-        user = User.objects.get(id=request.session["user_id"])
-        game = Game.objects.create(
-            type = request.POST['title'],
-            date = request.POST['date'],
-            start = request.POST['start'],
-            end = request.POST['end'],
-            location = request.POST['end'],
-            end = request.POST['end'],
-            notes = request.POST['notes'],
-            created_by = user
+#     if len(errors):
+#         for key, value in errors.items():
+#             messages.error(request, value)
+#         return redirect('/allgames')
+#     else:
+#         user = User.objects.get(id=request.session["user_id"])
+#         game = Game.objects.create(
+#             type = request.POST['title'],
+#             date = request.POST['date'],
+#             start = request.POST['start'],
+#             end = request.POST['end'],
+#             location = request.POST['end'],
+#             end = request.POST['end'],
+#             notes = request.POST['notes'],
+#             created_by = user
             
-        )
-        # bonus: the workout creator automatically favorites the workout
-        user.favorited_workouts.add(workout)
+#         )
+#         # bonus: the workout creator automatically favorites the workout
+#         user.favorited_workouts.add(workout)
 
-        return redirect(f'/games/{game.id}')
+#         return redirect(f'/games/{game.id}')
     
