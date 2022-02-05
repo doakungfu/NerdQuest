@@ -9,7 +9,11 @@ import bcrypt
 def all_games(request):
     return render(request, 'events/all_games.html')
 
+def one_game(request):
+    contest = {
 
+    }
+    return render(request, 'events/game.html', context)
 def games(request):
      context = {
 
@@ -44,18 +48,4 @@ def add_game(request):
     return redirect('/games/')
 
 
-# def create(request):
-    # CREATE THE SHOW
-#     errors = Show.objects.validate(request.POST)
-#     if errors:
-#         for (key, value) in errors.items():
-#             messages.error(request, value)
-#         return redirect('/shows/new')
-#
-#     Show.objects.create(
-#         title = request.POST['title'],
-#         network = request.POST['network'],
-#         release_date = request.POST['release_date'],
-#         description = request.POST['description']
-#     )
-#     return redirect('/shows')
+ 
