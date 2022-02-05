@@ -40,7 +40,7 @@ def add_game(request):
         date=request.POST['date'],
         start=request.POST['start'],
         end=request.POST['end'],
-        location=request.POST['end'],
+        location=request.POST['location'],
         notes=request.POST['notes'])
     return redirect('/games/')
 
