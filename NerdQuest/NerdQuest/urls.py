@@ -18,6 +18,11 @@ from django.urls import path, include
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('events/', include('events.urls')),
     path('',include('logreg.urls'))
 ]
+=======
+    path('events/', include('app.events.urls')),
+    path('',include('app.logreg.urls'))
+>>>>>>> 8ae3bf1a8beb472fa8a074fede0d5ce1464870c2

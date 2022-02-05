@@ -14,6 +14,7 @@ def index(request):
     return render(request, 'logreg/index.html')
 
 
+
 def create_user(request):
     if request.method == "POST":
         errors = User.objects.create_validator(request.POST)
@@ -32,6 +33,7 @@ def create_user(request):
     return redirect('/index')
 
 
+
 def login(request):
     if request.method == "POST":
         users_with_email = User.objects.filter(email=request.POST['email'])
@@ -44,6 +46,7 @@ def login(request):
     return redirect('/welcome')
 
 
+
 def welcome(request):
     if 'user_id' not in request.session:
         return redirect('/index')
@@ -53,7 +56,14 @@ def welcome(request):
     return render(request, 'logreg/welcome.html', context)
 
 
+
 def logout(request):
     request.session.flush()
     return redirect('/')
+<<<<<<< HEAD:NerdQuest/logreg/views.py
   
+=======
+ from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> 8ae3bf1a8beb472fa8a074fede0d5ce1464870c2:NerdQuest/login_app/views.py
