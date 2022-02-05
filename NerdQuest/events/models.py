@@ -1,5 +1,5 @@
 from django.db import models
-from login_app.models import User
+# from  login_app.models import User
 import re
 import bcrypt
 from datetime import datetime
@@ -26,7 +26,7 @@ class Game(models.Model):
     end = models.TimeField()
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    creator = models.ManyToManyField(User)
+    # creator = models.ManyToManyField(User)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
