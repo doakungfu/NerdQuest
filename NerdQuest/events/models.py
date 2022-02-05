@@ -1,5 +1,5 @@
 from django.db import models
-# from  login_app.models import User
+from  logreg.models import User
 import re
 import bcrypt
 from datetime import datetime
@@ -19,6 +19,15 @@ class GameManager(models.Manager):
 #             errors['network'] = 'Network field should be at least 3 characters'
          return errors
 # 
+# class Organizer(models.Model):
+#     first_name = models.CharField(max_length=255)
+#     last_name = models.CharField(max_length=255)
+#     event =models.CharField(max_length=255)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     # organized_by=models.ForeignKey(Game, related_name='creator', on_delete=models.CASCADE)
+# 
+
 class Game(models.Model):
     gameType = models.CharField(max_length=255)
     date = models.DateField(auto_now_add=True)
@@ -26,10 +35,11 @@ class Game(models.Model):
     end = models.TimeField()
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    # creator = models.ManyToManyField(User)
+    creator = models.ForeignKey(User, related_name='created_by', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = GameManager()
+
     def __str__(self):
         return f"Type of Game: {self.gameType}"
