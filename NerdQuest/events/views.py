@@ -1,4 +1,3 @@
-from importlib.resources import read_text
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Game
