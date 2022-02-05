@@ -12,8 +12,8 @@ class GameManager(models.Manager):
             # errors['start'] = ' Start time should be in the future'
         #  if datetime.now(post_data['end'],) > datetime.now():
             # errors['end'] = ' End time should be in the future'
-         if post_data['notes'] != '' and len(post_data['notes']) < 10:
-            errors['notes'] = 'Notes should be at least 10 characters'
+        #  if post_data['notes'] != '' and len(post_data['notes']) < 10:
+        #     errors['notes'] = 'Notes should be at least 10 characters'
 #         
 # if len(form['network']) < 3:
 #             errors['network'] = 'Network field should be at least 3 characters'
@@ -31,8 +31,8 @@ class GameManager(models.Manager):
 class Game(models.Model):
     gameType = models.CharField(max_length=255)
     date = models.DateField(auto_now_add=True)
-    start = models.TimeField (auto_now= True) 
-    end = models.TimeField()
+    startTime = models.TimeField (auto_now= True) 
+    endTime = models.TimeField(auto_now=False)
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
     # creator = models.ForeignKey(User, related_name='created_by', on_delete=models.CASCADE)

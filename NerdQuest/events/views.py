@@ -38,8 +38,8 @@ def add_game(request):
         Game.objects.create(
         gameType=request.POST['gameType'],
         date=request.POST['date'],
-        start=request.POST['start'],
-        end=request.POST['end'],
+        startTime=request.POST['startTime'],
+        endTime=request.POST['endTime'],
         location=request.POST['location'],
         notes=request.POST['notes'])
     return redirect('/games/')
