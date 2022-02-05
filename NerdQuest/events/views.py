@@ -13,10 +13,10 @@ def all_games(request):
 
 def games(request):
      context = {
-         request.session['user_id'] = user.id
-         
-         'my_games':Game.objects.filter(id=request.session['user_id'])
 
+         
+         'my_games': Game.objects.all()
+ 
      }
      return render(request, 'events/games.html', context )
 
@@ -27,24 +27,21 @@ def new_game(request):
 
 
 def add_game(request):
-    if request.method == 'POST':
-        
-        errors = Game.objects.create_validator(request.POST)
-        if len(errors) > 0 :
-            for key, value in errors.items():
-               messages.error(request, value)
-        return redirect('/games/new')
+    if request.method == 'POST':        
+        # errors = Game.objects.create_validator(request.POST)
+        # if len(errors) > 0 :
+        #     for key, value in errors.items():
+        #        messages.error(request, value)
+        # return redirect('/games/new')
     
         loggedin_user = User.objects.get(id=request.session["user_id"])
-        new_game = Game.objects.create(
+        Game.objects.create(
         type=request.POST['title'],
         date=request.POST['date'],
         start=request.POST['start'],
         end=request.POST['end'],
         location=request.POST['end'],
-        notes=request.POST['notes'],
-        creator= Game.objects.get(id= request.session['user_id'])
-    )
+        notes=request.POST['notes'])
     return redirect('/games/')
 
 

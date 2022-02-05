@@ -1,5 +1,5 @@
 from django.db import models
-from  logreg.models import User
+ 
 import re
 import bcrypt
 from datetime import datetime
@@ -8,10 +8,10 @@ class GameManager(models.Manager):
          errors = {}
          if len(post_data['gameType']) < 2:
              errors['gameType'] = 'Game type  field should be at least 2 characters'
-         if datetime.now(post_data['start'], ) < datetime.now():
-            errors['start'] = ' Start time should be in the future'
-         if datetime.now(post_data['end'],) > datetime.now():
-            errors['end'] = ' End time should be in the future'
+        #  if datetime.now(post_data['start'], ) < datetime.now():
+            # errors['start'] = ' Start time should be in the future'
+        #  if datetime.now(post_data['end'],) > datetime.now():
+            # errors['end'] = ' End time should be in the future'
          if post_data['notes'] != '' and len(post_data['notes']) < 10:
             errors['notes'] = 'Notes should be at least 10 characters'
 #         
@@ -35,7 +35,7 @@ class Game(models.Model):
     end = models.TimeField()
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    creator = models.ForeignKey(User, related_name='created_by', on_delete=models.CASCADE)
+    # creator = models.ForeignKey(User, related_name='created_by', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
