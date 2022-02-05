@@ -48,16 +48,16 @@ import bcrypt
 
 
 def all_games(request):
-    return render(request, 'all_games.html')
+    return render(request, 'events/all_games.html')
 
 
 def games(request):
      
-    return render(request, 'games.html' )
+    return render(request, 'events/games.html' )
 
 
 def add_game(request):
-    return render(request, 'add_game.html')
+    return render(request, 'events/add_game.html')
 
 
 def new_game(request):
