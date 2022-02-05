@@ -1,7 +1,7 @@
 from importlib.resources import read_text
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import *
+from .models import Game
 import bcrypt
 
 
@@ -56,17 +56,17 @@ def games(request):
     return render(request, 'events/games.html' )
 
 
-def add_game(request):
+def new_game(request):
     return render(request, 'events/add_game.html')
 
 
-def new_game(request):
+def add_game(request):
     if request.method == 'POST':
-      errors = Game.objects.create_validator(request.POST)
-      if len(errors) > 0 :
-        for key, value in errors.items():
-            messages.error(request, value)
-        return redirect('/games/new')
+        errors = Game.objects.create_validator(request.POST)
+        if len(errors) > 0 :
+            for key, value in errors.items():
+               messages.error(request, value)
+        return redirect('/games')
     
         new_user = User.objects.get(id=request.session["user_id"])
         new_game = Game.objects.create(
