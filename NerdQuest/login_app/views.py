@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 import bcrypt
-from .models import *
+from login_app.models import User
 from django.contrib import messages
 
 # Create your views here.
