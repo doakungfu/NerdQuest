@@ -1,15 +1,19 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 import bcrypt
-from login_app.models import User
+from .models import User
 from django.contrib import messages
 
 # Create your views here.
 # Landing page to nerdquest
+
+
 def enter(request):
-    return render(request,'login/enter.html')
+    return render(request, 'login/enter.html')
+
 
 def index(request):
     return render(request, 'login/index.html')
+
 
 def create_user(request):
     if request.method == "POST":
@@ -28,6 +32,7 @@ def create_user(request):
             return redirect('/success')
     return redirect('/')
 
+
 def login(request):
     if request.method == "POST":
         users_with_email = User.objects.filter(email=request.POST['email'])
@@ -39,6 +44,7 @@ def login(request):
         messages.error(request, "Email or password is incorrect")
     return redirect('/success')
 
+
 def welcome(request):
     if 'user_id' not in request.session:
         return redirect('/')
@@ -47,7 +53,10 @@ def welcome(request):
     }
     return render(request, 'loging/welcome.html', context)
 
+
 def logout(request):
     request.session.flush()
-    return redirect('/')    
- 
+    return redirect('/')
+ from django.shortcuts import render
+
+# Create your views here.
