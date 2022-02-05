@@ -9,11 +9,11 @@ import bcrypt
 
 
 
-# log in and registration page
-def index(request):
-    context = {}
-    return render(request, 'index.html', context)
-
+# # log in and registration page
+# def index(request):
+#     context = {}
+#     return render(request, 'index.html', context)
+# 
     # this is the page that has the 3 buttons
 # def welcome(request):, 
 #     return render(request,'welcome.html')
