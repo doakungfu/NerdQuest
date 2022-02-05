@@ -5,8 +5,18 @@ from .models import *
 import bcrypt   
 
 
+#Landing page to nerdquest
+# def enter(request):
+    # return render(request,'enter.html')
+
+# log in and registration page
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html')  
+    
+      # this is the page that has the 3 buttons
+# def welcome(request):
+#     return render(request,'welcome.html')
+
 
 def register(request):
     errors = User.objects.register_validator(request.POST)
@@ -62,28 +72,28 @@ def games(request):
 def new_game(request):
     return render(request, 'add_game.html')
 
-# def create_game(request):
-#     errors = Game.objects.game_validator(request.POST)
+def create_game(request):
+    errors = Game.objects.game_validator(request.POST)
 
-#     if len(errors):
-#         for key, value in errors.items():
-#             messages.error(request, value)
-#         return redirect('/allgames')
-#     else:
-#         user = User.objects.get(id=request.session["user_id"])
-#         game = Game.objects.create(
-#             type = request.POST['title'],
-#             date = request.POST['date'],
-#             start = request.POST['start'],
-#             end = request.POST['end'],
-#             location = request.POST['end'],
-#             end = request.POST['end'],
-#             notes = request.POST['notes'],
-#             created_by = user
+    if len(errors):
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/allgames')
+    else:
+        user = User.objects.get(id=request.session["user_id"])
+        game = Game.objects.create(
+            type = request.POST['title'],
+            date = request.POST['date'],
+            start = request.POST['start'],
+            end = request.POST['end'],
+            location = request.POST['end'],
+            # end = request.POST['end'],
+            notes = request.POST['notes'],
+            created_by = user
             
-#         )
-#         # bonus: the workout creator automatically favorites the workout
-#         user.favorited_workouts.add(workout)
+        )
+        # bonus: the workout creator automatically favorites the workout
 
-#         return redirect(f'/games/{game.id}')
+
+        return redirect(f'/games/{game.id}')
     
