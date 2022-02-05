@@ -52,13 +52,11 @@ def all_games(request):
 
 
 def games(request):
-    context = {
-        'games': Game.objects.filter(created_by='user.first.name')
-    }
-    return render(request, 'games.html', context)
+     
+    return render(request, 'games.html' )
 
 
-def new_game(request):
+def add_game(request):
     return render(request, 'add_game.html')
 
 
