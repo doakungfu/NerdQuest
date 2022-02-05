@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path("allgames", views.all_games),
+    path("games/all", views.all_games),
     path("games", views.games),
     path("games/new", views.new_game),
     # path("games/<int:game_id>", views.onegame), Kevin will do

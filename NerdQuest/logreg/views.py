@@ -8,11 +8,10 @@ from django.contrib import messages
 
 
 def enter(request):
-    return render(request, 'login/enter.html')
-
+    return render(request, 'logreg/enter.html')
 
 def index(request):
-    return render(request, 'login/index.html')
+    return render(request, 'logreg/index.html')
 
 
 def create_user(request):
@@ -21,7 +20,7 @@ def create_user(request):
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value)
-            return redirect('/')
+            return redirect('/index')
         else:
             password = request.POST['password']
             pw_hash = bcrypt.hashpw(
@@ -29,8 +28,8 @@ def create_user(request):
             user = User.objects.create(
                 first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'], password=pw_hash)
             request.session['user_id'] = user.id
-            return redirect('/success')
-    return redirect('/')
+            return redirect('/welcome')
+    return redirect('/index')
 
 
 def login(request):
@@ -42,21 +41,19 @@ def login(request):
                 request.session['user_id'] = user.id
                 return redirect('/success')
         messages.error(request, "Email or password is incorrect")
-    return redirect('/success')
+    return redirect('/welcome')
 
 
 def welcome(request):
     if 'user_id' not in request.session:
-        return redirect('/')
+        return redirect('/index')
     context = {
         'current_user': User.objects.get(id=request.session['user_id'])
     }
-    return render(request, 'loging/welcome.html', context)
+    return render(request, 'logreg/welcome.html', context)
 
 
 def logout(request):
     request.session.flush()
     return redirect('/')
- from django.shortcuts import render
-
-# Create your views here.
+  
