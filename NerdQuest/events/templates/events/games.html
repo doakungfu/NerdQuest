@@ -19,8 +19,9 @@
     </head>
 
     <body>
+        
         <div class="container">
-           <h2>Welcome {{request.session.first_name}}</h2>
+           <h2>Welcome {{request.session.user.first_name}}</h2>
            {{all_games}}
            <table class="table table-dark">
                 
