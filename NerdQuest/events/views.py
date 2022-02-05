@@ -36,7 +36,7 @@ def add_game(request):
     
         loggedin_user = User.objects.get(id=request.session["user_id"])
         Game.objects.create(
-        type=request.POST['title'],
+        gameType=request.POST['gameType'],
         date=request.POST['date'],
         start=request.POST['start'],
         end=request.POST['end'],
