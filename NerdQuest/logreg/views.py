@@ -60,10 +60,4 @@ def welcome(request):
 def logout(request):
     request.session.flush()
     return redirect('/')
-<<<<<<< HEAD:NerdQuest/logreg/views.py
-  
-=======
- from django.shortcuts import render
-
-# Create your views here.
->>>>>>> 8ae3bf1a8beb472fa8a074fede0d5ce1464870c2:NerdQuest/login_app/views.py
+ 
