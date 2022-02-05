@@ -1,64 +1,53 @@
-from pydoc import importfile
+from importlib.resources import read_text
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import User, Game
+from .models import *
 import bcrypt
 
 
 # Landing page to nerdquest
-# def enter(request):
-# return render(request,'enter.html')
+def enter(request):
+    return render(request,'enter.html')
+
+def welcome(request):
+    if 'user_id' not in request.session:
+        return redirect('/index')
+    else:
+        context = {
+        'this_user': User.objects.get(id = request.session('user_id'))
+    }
+        return render(request, 'welcome.html', context)
 
 # log in and registration page
 def index(request):
-    return render(request, 'index.html')
+    context = {}
+    return render(request, 'index.html', context)
 
     # this is the page that has the 3 buttons
-# def welcome(request):
+# def welcome(request):, 
 #     return render(request,'welcome.html')
-
-
-def register(request):
-    if request.method == "GET":
-        return redirect('/index')
-    errors = User.objects.validate(request.POST)
-    if errors:
-        for e in errors.values():
-            messages.error(request, e)
-        return redirect('/')
-        #     else:
-        new_user = User.objects.create(
-            first_name=request.POST['first_name'],
-            last_name=request.POST['last_name'],
-            email=request.POST['email'],
-            password=bcrypt.hashpw(
-            request.POST['password'].encode(), bcrypt.gensalt()).decode()
-        )
-        request.session['user_id'] = user.id
-        request.session['greeting'] = user.first_name
-        return redirect('/allgames')
-
-
-def login(request):
-     if request.method == 'POST':
-     
-
-    # if len(errors):
-    #     for key, value in errors.items():
-    #         messages.error(request, value)
-    #     return redirect('/')
-    # else:
-        user = User.objects.get(email=request.POST['login_email'])
-        request.session['user_id'] = user.id
-        request.session['greeting'] = user.first_name
-        return redirect('/allgames')
-
-
-def logout(request):
-    request.session.flush()
-
-    return redirect('/')
-
+# 
+# def register(request):
+#     if request.method != "POST":
+#         return redirect('/index')
+#     errors = User.objects.register_validator(request.POST)
+#     if len(errors) > 0:
+#         for key, value in errors.items():
+#             messages.error(request, value)
+#         return redirect('/index')
+#    
+#     
+#     new_user = User.objects.create(
+#         first_name=request.POST['first_name'],
+#         last_name=request.POST['last_name'],
+#         email=request.POST['email'], 
+#         hashed_pw = bcrypt.hashpw(request.POST['password'].encode(),bcrypt.gensalt(14)).decode()
+#         password=hashed_pw
+#     )
+#         #store users id in session
+#     request.session['user_id'] = new_user.id
+#     request.session['first_name'] = new_user.first_name
+#   q
 # def all_games(request):
 
 #     context = {
@@ -89,7 +78,7 @@ def new_game(request):
         for key, value in errors.items():
             messages.error(request, value)
         return redirect('/games/new')
-    else:
+    
         new_user = User.objects.get(id=request.session["user_id"])
         new_game = Game.objects.create(
         type=request.POST['title'],
@@ -98,7 +87,7 @@ def new_game(request):
         end=request.POST['end'],
         location=request.POST['end'],
         notes=request.POST['notes'],
-        creator= Game.objects.get(id= request.session[user_id])
+        creator= Game.objects.get(id= request.session['user_id'])
     )
     return redirect('/games')
 

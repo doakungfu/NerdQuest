@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create New Game Event</title>
+        {% load static%}
+        <link rel="stylesheet" href="{% static 'css/showstyle' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+            integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+
+
+    <body>
+        <div class="container">
+            <h1>Add A Show</h1>
+
+            <form class="row g-3" action="/games/create" method="POST">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+                {% csrf_token %}
+                <div class="col-12">
+                    <label for="type" class="form-label">Type Of Game</label>
+                    <input type="text" class="form-control" id="type" name="type">
+                </div>
+                <div class="col-md-6">
+                    <label for="date" class="form-label">Game Date</label>
+                    <input type="text" class="form-control" id="date" name="date">
+                </div>
+                <div class="col-md-6">
+                    <label for="start" class="form-label">Start Time</label>
+                    <input type="text" class="form-control" id="start" name="start">
+                </div>
+                <div class="col-md-6">
+                    <label for="end" class="form-label">End Time</label>
+                    <input type="text" class="form-control" id="end" name="end">
+                </div>
+                <div class="col-md-6">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" name="location">
+                </div>
+                <div class="col-md-6">
+                    <label for="created_by" class="form-label">Event Created By</label>
+                    <input type="text" class="form-control" id="created_by" name="created_by">
+                </div>
+                <div class="mb-3">
+                    <label for="notes" class="form-label">Notes</label>
+                    <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                </div>
+                <button class="btn btn-primary"type="submit">Create</button>
+            </form>
+
+        </div>
+    </body>
+
+
+</html>
