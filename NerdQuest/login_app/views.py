@@ -4,8 +4,12 @@ from .models import *
 from django.contrib import messages
 
 # Create your views here.
+# Landing page to nerdquest
+def enter(request):
+    return render(request,'login/enter.html')
+
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'login/index.html')
 
 def create_user(request):
     if request.method == "POST":
@@ -35,13 +39,13 @@ def login(request):
         messages.error(request, "Email or password is incorrect")
     return redirect('/success')
 
-def success(request):
+def welcome(request):
     if 'user_id' not in request.session:
         return redirect('/')
     context = {
         'current_user': User.objects.get(id=request.session['user_id'])
     }
-    return render(request, 'success.html', context)
+    return render(request, 'loging/welcome.html', context)
 
 def logout(request):
     request.session.flush()

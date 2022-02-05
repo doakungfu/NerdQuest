@@ -5,18 +5,9 @@ from .models import *
 import bcrypt
 
 
-# Landing page to nerdquest
-def enter(request):
-    return render(request,'enter.html')
 
-def welcome(request):
-    if 'user_id' not in request.session:
-        return redirect('/index')
-    else:
-        context = {
-        'this_user': User.objects.get(id = request.session('user_id'))
-    }
-        return render(request, 'welcome.html', context)
+
+
 
 # log in and registration page
 def index(request):
