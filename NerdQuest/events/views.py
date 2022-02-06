@@ -7,11 +7,15 @@ import bcrypt
  
 
 def all_games(request):
+    context = {
+        'all_games':Game.objects.all()
+    }
     return render(request, 'events/all_games.html')
 
 def one_game(request):
-    contest = {
-
+    context = {
+        'game': Game.objects.get(id=game_id),
+        'current_user': User.objects.get(id=request.session['user_id'])
     }
     return render(request, 'events/game.html', context)
 def games(request):
@@ -47,5 +51,23 @@ def add_game(request):
         notes=request.POST['notes'])
     return redirect('/games/')
 
+def edit(request, game_id):
+    # one_game = Game.objects.get(id=show_id)
+    context = {
+        'game': Game.objects.get(id=game_id),
+        'current_user': User.objects.get(id=request.session['user_id'])
+    }
+    return render(request, 'edit_game.html', context)
 
+def update(request, game_id):
+    if request.method == 'POST':
+        to_update = Game.objects.get(id=game_id)
+        to_update.gameType = request.POST['gameType'],
+        to_update.date = request.POST['date'],
+        to_update.startTime = request.POST['startTime'],
+        to_update.endTime = request.POST['endTime'],
+        to_update.location = request.POST['location'],
+        to_update.notes = request.POST['notes'],
+        return redirect('/games/')
+        
  
