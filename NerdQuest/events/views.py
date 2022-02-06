@@ -18,10 +18,10 @@ def one_game(request):
         'current_user': User.objects.get(id=request.session['user_id'])
     }
     return render(request, 'events/game.html', context)
+
 def games(request):
      context = {
 
-         
          'my_games': Game.objects.all()
  
      }
@@ -62,12 +62,14 @@ def edit(request, game_id):
 def update(request, game_id):
     if request.method == 'POST':
         to_update = Game.objects.get(id=game_id)
-        to_update.gameType = request.POST['gameType'],
-        to_update.date = request.POST['date'],
-        to_update.startTime = request.POST['startTime'],
-        to_update.endTime = request.POST['endTime'],
-        to_update.location = request.POST['location'],
-        to_update.notes = request.POST['notes'],
+        to_update.gameType = request.POST['gameType']
+        to_update.date = request.POST['date']
+        to_update.startTime = request.POST['startTime']
+        to_update.endTime = request.POST['endTime']
+        to_update.location = request.POST['location']
+        to_update.notes = request.POST['notes']
+        game.save()
+        
         return redirect('/games/')
         
  
