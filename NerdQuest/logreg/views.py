@@ -3,6 +3,7 @@ import bcrypt
 from .models import User
 from django.contrib import messages
 
+
 # Create your views here.
 # Landing page to nerdquest
 

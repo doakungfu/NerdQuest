@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Game
@@ -19,13 +20,16 @@ def one_game(request):
     }
     return render(request, 'events/game.html', context)
 def games(request):
-     context = { 
+    first_name = request.session.get('first_name')
+    request.session['first_name'] = first_name
+    context = { 
+        
          'my_games': Game.objects.all()
         #  'current_user': User.objects.filter(id=request.session['user_id'])
     }
  
      
-     return render(request, 'events/games.html', context )
+    return render(request, 'events/games.html', context )
 
 
 def new_game(request):
