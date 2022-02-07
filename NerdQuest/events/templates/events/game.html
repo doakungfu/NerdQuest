@@ -21,7 +21,9 @@
             <h4>End Time:: {{game.endTime}}</h4>
             <h4>Location: {{game.location}}</h4>
             <h4>Notes: {{game.notes}}</h4>
-            <h4>Created by: {{game.user.first_name}}</h4>
+            {% comment %} <h4>Created by: {{game.user.first_name}}</h4> {% endcomment %}
+            <td><a href="/games/game/{{game.id}}/edit">Edit</a></td>
+
 
         </div>   
     </body>

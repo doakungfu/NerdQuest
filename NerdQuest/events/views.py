@@ -42,7 +42,7 @@ def add_game(request):
         endTime=request.POST['endTime'],
         location=request.POST['location'],
         notes=request.POST['notes'],
-        created_by=request.POST['user']
+        created_by=request.POST['user'])
     return redirect('/games/')
 
 def one_game(request, game_id):
