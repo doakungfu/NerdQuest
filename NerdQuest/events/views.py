@@ -7,16 +7,20 @@ import bcrypt
  
 
 def all_games(request):
+    all_games=Game.objects.all()
+    context = {
+        'all_game': all_games
+    }
     return render(request, 'events/all_games.html')
 
 def one_game(request):
-    contest = {
+    context = {
 
     }
     return render(request, 'events/game.html', context)
 def games(request):
      context = {
-
+           
          
          'my_games': Game.objects.all()
  
