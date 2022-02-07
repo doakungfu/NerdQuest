@@ -19,12 +19,12 @@ def one_game(request):
     }
     return render(request, 'events/game.html', context)
 def games(request):
-     context = {
-           
-         
+     context = { 
          'my_games': Game.objects.all()
+        #  'current_user': User.objects.filter(id=request.session['user_id'])
+    }
  
-     }
+     
      return render(request, 'events/games.html', context )
 
 
@@ -48,7 +48,10 @@ def add_game(request):
         startTime=request.POST['startTime'],
         endTime=request.POST['endTime'],
         location=request.POST['location'],
-        notes=request.POST['notes'])
+        creator = loggedin_user,
+        notes=request.POST['notes']),
+        
+        
     return redirect('/games/')
 
 
