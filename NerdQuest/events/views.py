@@ -14,13 +14,11 @@ def all_games(request):
     return render(request, 'events/all_games.html')
 
 def games(request):
-     context = {
+    context = {
 
          'my_games': Game.objects.all()
         #  'current_user': User.objects.filter(id=request.session['user_id'])
-    }
- 
-     
+    }     
     return render(request, 'events/games.html', context )
 
 
