@@ -16,9 +16,25 @@ def games(request):
      context = {
 
          'my_games': Game.objects.all()
+<<<<<<< Updated upstream
  
      }
      return render(request, 'events/games.html', context )
+=======
+ 
+     }
+     return render(request, 'events/games.html', context )
+
+# def games(request):
+#      context = {
+
+#          'my_games': Game.objects.all()
+#         #  'current_user': User.objects.filter(id=request.session['user_id'])
+#     }
+ 
+     
+#     return render(request, 'events/games.html', context )
+>>>>>>> Stashed changes
 
 
 def new_game(request):
