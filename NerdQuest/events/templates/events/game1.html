@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A closer look at this game</title>
+    {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> {% endcomment %}
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="container" style="border: 20px;">
+                <h4>Date: {{game.date}}</h4>
+                <h4>Start Time: {{game.startTime}}</h4>
+                <h4>End Time:: {{game.endTime}}</h4>
+                <h4>Location: {{game.location}}</h4>
+                <h4>Notes: {{game.notes}}</h4>
+                {% comment %} <h4>Created by: {{game.user.first_name}}</h4> {% endcomment %}
+            {% comment %} {% comment %} <div class="col-6 px-2"> {% endcomment %}
+                <h3>{{game.gameType}}</h3>
+                {% if game.creator.id != request.session.user_id %}
+                {% else %}
+                <form action="/games/{{game.id}}/update" method="post">
+                    {% csrf_token %}
+                    <label for="description">Description</label>
+                    <input name="description" class="form-control w-50" placeholder="{{game.description}}">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    {% comment %} <a href="/games/{{game.id}}/delete" role="button" class="btn btn-danger">Delete</a> {% endcomment %}
+                </form>
+                {% endif %}
+            </div>
+            
+        </div>
+
+    </div>
+</body>
+
+</html>
