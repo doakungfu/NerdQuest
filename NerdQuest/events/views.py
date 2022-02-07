@@ -8,22 +8,14 @@ import bcrypt
  
 
 def all_games(request):
-    all_games=Game.objects.all()
     context = {
-        'all_game': all_games
+        'all_games':Game.objects.all()
     }
     return render(request, 'events/all_games.html')
 
-def one_game(request):
-    context = {
-
-    }
-    return render(request, 'events/game.html', context)
 def games(request):
-    first_name = request.session.get('first_name')
-    request.session['first_name'] = first_name
-    context = { 
-        
+     context = {
+
          'my_games': Game.objects.all()
         #  'current_user': User.objects.filter(id=request.session['user_id'])
     }
@@ -58,5 +50,32 @@ def add_game(request):
         
     return redirect('/games/')
 
+def one_game(request, game_id):
+    context = {
+        'game': Game.objects.get(id=game_id),
+        'current_user': User.objects.get(id=request.session['user_id'])
+    }
+    return render(request, 'events/game.html', context)
 
+def edit(request, game_id):
+    # one_game = Game.objects.get(id=show_id)
+    context = {
+        'game': Game.objects.get(id=game_id),
+        'current_user': User.objects.get(id=request.session['user_id'])
+    }
+    return render(request, 'events/edit_game.html', context)
+
+def update(request, game_id):
+    if request.method == 'POST':
+        to_update = Game.objects.get(id=game_id)
+        to_update.gameType = request.POST['gameType']
+        to_update.date = request.POST['date']
+        to_update.startTime = request.POST['startTime']
+        to_update.endTime = request.POST['endTime']
+        to_update.location = request.POST['location']
+        to_update.notes = request.POST['notes']
+        game.save()
+        
+        return redirect('/games/')
+        
  

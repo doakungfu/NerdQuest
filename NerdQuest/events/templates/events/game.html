@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous"> {% endcomment %}
+            <title>Details</title>
+    </head>
+
+    <body>
+        <header style="position: relative; display: flex;">
+            <h2>About this game</h2>
+            <h4><a href="/games">Home</a></h4>
+            <h4><a href="/logout">Logout</a></h4>
+        </header>
+
+    
+            <h4>{{game.gameType}}</h4>
+        <div class="container" style="border: 20px;">
+            <h4>Date: {{game.date}}</h4>
+            <h4>Start Time: {{game.startTime}}</h4>
+            <h4>End Time:: {{game.endTime}}</h4>
+            <h4>Location: {{game.location}}</h4>
+            <h4>Notes: {{game.notes}}</h4>
+            {% comment %} <h4>Created by: {{game.user.first_name}}</h4> {% endcomment %}
+            <td><a href="/games/{{game.id}}/edit">Edit</a></td>
+
+
+        </div>   
+    </body>
+</html>
