@@ -12,7 +12,13 @@
 
         <nav class="main-nav">
             <ul>
-                <li>Upload Avatar</li>
+                <li>                  
+                    <form action="/upload/avatar" method="POST">
+                        {% csrf_token %}
+                        <input type="file" name="avatar" accept="image/*">
+                        <button type="submit">Upload Avatar</button>
+                    </form>
+                </li>
                 <li>Welcome {{first_name}}</li>                
                 <li><a href="/logout">Logout</a></li>                
             </ul>
