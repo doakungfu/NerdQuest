@@ -34,7 +34,7 @@ class Game(models.Model):
     endTime = models.TimeField(auto_now=False)
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    # creator = models.ForeignKey(User, related_name='created_by', on_delete=models.CASCADE)
+    creator = models.CharField(default="", max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -17,7 +17,7 @@
     </div>
     {%endif%}
     <header style="position: relative; display: flex">
-      <h1>Hello {{user.first_name}}! Organize a Game!</h1>
+      <h1>Hello {{request.session.first_name}}! Organize a Game!</h1>
       <h5><a href="/logout">Logout</a></h5>
     </header>
 
@@ -44,6 +44,10 @@
       <div  class = " "> 
         <label for="location">Location:</label>
         <input type="text" name="location" id="location" />
+      </div>
+      <div  class = " "> 
+        {% comment %} <label for="creator">Game Organized By:</label>
+        <input type="text" name="creator" id="creator" /> {% endcomment %}
       </div>
 
       <div  class = " "> 

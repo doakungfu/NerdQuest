@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Game
@@ -7,34 +8,20 @@ import bcrypt
  
 
 def all_games(request):
-    context = {
-        'all_games':Game.objects.all()
-    }
-    return render(request, 'events/all_games.html')
+    # all_games = Game.objects.all()
 
-def games(request):
-     context = {
+    context = {
+       'my_games': Game.objects.all()
+    }
+    return render(request, 'events/all_games.html', context)
+
+def my_games(request):
+    context = {
 
          'my_games': Game.objects.all()
-<<<<<<< Updated upstream
- 
-     }
-     return render(request, 'events/games.html', context )
-=======
- 
-     }
-     return render(request, 'events/games.html', context )
-
-# def games(request):
-#      context = {
-
-#          'my_games': Game.objects.all()
-#         #  'current_user': User.objects.filter(id=request.session['user_id'])
-#     }
- 
-     
-#     return render(request, 'events/games.html', context )
->>>>>>> Stashed changes
+        #  'current_user': User.objects.filter(id=request.session['user_id'])
+    }     
+    return render(request, 'events/my_games.html', context )
 
 
 def new_game(request):
@@ -57,8 +44,10 @@ def add_game(request):
         startTime=request.POST['startTime'],
         endTime=request.POST['endTime'],
         location=request.POST['location'],
-        notes=request.POST['notes'],
-        created_by=request.POST['user'])
+        creator = loggedin_user,
+        notes=request.POST['notes']),
+        
+        
     return redirect('/games/')
 
 def one_game(request, game_id):
@@ -85,7 +74,7 @@ def update(request, game_id):
         to_update.endTime = request.POST['endTime']
         to_update.location = request.POST['location']
         to_update.notes = request.POST['notes']
-        game.save()
+        Game.save(game_id)
         
         return redirect('/games/')
         

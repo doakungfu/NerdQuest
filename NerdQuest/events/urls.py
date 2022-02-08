@@ -4,7 +4,7 @@ from .import views
 
 urlpatterns = [
     path("all", views.all_games),
-    path("", views.games),
+    path("", views.my_games),
     path("new", views.new_game),
     path("add", views.add_game),
     path("<int:game_id>", views.one_game),
