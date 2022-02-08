@@ -56,7 +56,9 @@ def welcome(request):
     }
     return render(request, 'logreg/welcome.html', context)
 
-
+def upload_avatar(request):
+    if request.method == "POST" or request.method == "FILES":
+        pass
 
 def logout(request):
     request.session.flush()

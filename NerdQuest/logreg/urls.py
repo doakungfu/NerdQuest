@@ -8,5 +8,5 @@ urlpatterns = [
     path('welcome',views.welcome),
     path('login', views.login),
     path('logout', views.logout),
-     
+    path('upload_avatar', views.upload_avatar),
 ]
