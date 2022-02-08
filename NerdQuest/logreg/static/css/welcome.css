@@ -117,6 +117,10 @@ body {
     z-index: 10;
 }
 
+.box a {
+    text-decoration: none; 
+}
+
 .footer {
     color: #fa1404;
     display: flex;
