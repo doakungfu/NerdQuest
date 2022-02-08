@@ -78,4 +78,8 @@ def update(request, game_id):
         
         return redirect('/games/')
         
- 
+def delete(request, game_id):
+    game = Game.objects.get(id=game_id)
+    game.delete()
+
+    return redirect('/games/')
