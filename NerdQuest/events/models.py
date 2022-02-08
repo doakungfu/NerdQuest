@@ -1,4 +1,5 @@
 from django.db import models
+from logreg.models import *
 import re
 import bcrypt
 from datetime import datetime
@@ -34,7 +35,7 @@ class Game(models.Model):
     endTime = models.TimeField(auto_now=False)
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    creator = models.CharField(default="", max_length=255)
+    # creator = models.ForeignKey(User, related_name="creator", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

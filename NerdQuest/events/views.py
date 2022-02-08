@@ -19,7 +19,7 @@ def my_games(request):
     context = {
 
          'my_games': Game.objects.all()
-        #  'current_user': User.objects.filter(id=request.session['user_id'])
+        #  'creator': User.objects.filter(id=request.session['user_id'])
     }     
     return render(request, 'events/my_games.html', context )
 
@@ -53,7 +53,7 @@ def add_game(request):
 def one_game(request, game_id):
     context = {
         'game': Game.objects.get(id=game_id),
-        'current_user': User.objects.get(id=request.session['user_id'])
+        # 'creator': User.objects.get(id=request.session['user_id'])
     }
     return render(request, 'events/game.html', context)
 
@@ -61,7 +61,7 @@ def edit(request, game_id):
     # one_game = Game.objects.get(id=show_id)
     context = {
         'game': Game.objects.get(id=game_id),
-        'current_user': User.objects.get(id=request.session['user_id'])
+        # 'creator': User.objects.get(id=request.session['user_id'])
     }
     return render(request, 'events/edit_game.html', context)
 
