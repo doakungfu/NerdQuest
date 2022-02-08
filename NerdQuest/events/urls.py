@@ -10,5 +10,5 @@ urlpatterns = [
     path("<int:game_id>", views.one_game),
     path("<int:game_id>/edit",views.edit),
     path("<int:game_id>/update", views.update),
-    # path("<int:game_id/delete", views.delete)
+    path("<int:game_id>/delete", views.delete)
 ]
