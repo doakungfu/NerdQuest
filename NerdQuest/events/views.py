@@ -38,14 +38,14 @@ def add_game(request):
         #        messages.error(request, value)
         # return redirect('/games/new')
     
-        loggedin_user = User.objects.get(id=request.session["user_id"])
+        # loggedin_user = User.objects.get(id=request.session["user_id"])
         Game.objects.create(
         gameType=request.POST['gameType'],
         date=request.POST['date'],
         startTime=request.POST['startTime'],
         endTime=request.POST['endTime'],
         location=request.POST['location'],
-        creator = loggedin_user,
+        # creator = loggedin_user,
         notes=request.POST['notes']),
         
         

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from apps.logreg.models import *
+from logreg.models import *
 import re
 import bcrypt
 from datetime import datetime
