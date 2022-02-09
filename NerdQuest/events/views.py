@@ -2,7 +2,8 @@ import re
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Game
-from logreg.models import User
+# from logreg.models import User
+# from django.contrib.auth.models import User
 import bcrypt
 
  

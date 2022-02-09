@@ -1,5 +1,6 @@
 from django.db import models
 from logreg.models import *
+# from django.contrib.auth.models import User
 import re
 import bcrypt
 from datetime import datetime
@@ -18,6 +19,18 @@ class GameManager(models.Manager):
 # if len(form['network']) < 3:
 #             errors['network'] = 'Network field should be at least 3 characters'
          return errors
+
+# class User(models.Model):
+#     first_name = models.CharField(max_length=255)
+#     last_name = models.CharField(max_length=255)
+#     email = models.CharField(max_length=255)
+#     password = models.CharField(max_length=255)
+#     avatar = models.ImageField(default='default.png', blank=True)
+#     # created_by = models.ForeignKey(Game, related_name='creator', on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+#     objects = UserManager()
+
 # 
 # class Organizer(models.Model):
 #     first_name = models.CharField(max_length=255)
@@ -35,7 +48,7 @@ class Game(models.Model):
     endTime = models.TimeField(auto_now=False)
     location = models.CharField(max_length=255)
     notes = models.TextField(max_length=2500)
-    # creator = models.ForeignKey(User, related_name="creator", on_delete=models.CASCADE)
+    # creator = models.ForeignKey(User, related_name="created_game", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -43,3 +56,4 @@ class Game(models.Model):
 
     def __str__(self):
         return f"Type of Game: {self.gameType}"
+

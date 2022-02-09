@@ -1,5 +1,5 @@
 from django.db import models
-from events.models import Game
+from events.models import *
 import re
 
 # Create your models here.
@@ -29,7 +29,7 @@ class UserManager(models.Manager):
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    email = models.CharField(max_length=255) 
     password = models.CharField(max_length=255)
     avatar = models.ImageField(default='default.png', blank=True)
     # created_by = models.ForeignKey(Game, related_name='creator', on_delete=models.CASCADE)
