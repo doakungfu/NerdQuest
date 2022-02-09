@@ -20,18 +20,6 @@ class GameManager(models.Manager):
 #             errors['network'] = 'Network field should be at least 3 characters'
          return errors
 
-# class User(models.Model):
-#     first_name = models.CharField(max_length=255)
-#     last_name = models.CharField(max_length=255)
-#     email = models.CharField(max_length=255)
-#     password = models.CharField(max_length=255)
-#     avatar = models.ImageField(default='default.png', blank=True)
-#     # created_by = models.ForeignKey(Game, related_name='creator', on_delete=models.CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     objects = UserManager()
-
-# 
 # class Organizer(models.Model):
 #     first_name = models.CharField(max_length=255)
 #     last_name = models.CharField(max_length=255)
