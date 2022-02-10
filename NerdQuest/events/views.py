@@ -125,7 +125,7 @@ def update(request, game_id):
         to_update.endTime = request.POST['endTime']
         to_update.location = request.POST['location']
         to_update.notes = request.POST['notes']
-        Game.save(game_id)
+        # Game.save(game_id)
         
         return redirect('/games/')
         
