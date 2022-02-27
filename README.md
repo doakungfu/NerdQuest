@@ -20,4 +20,4 @@ Additional features:
 Team member roles:
 1. David Allen - Create & edit pages for game events app
 2. Kevin Gardner - Login & Registration app; events details page with edit/delete functions; location api
-3. Marki Lyons - CSS & responsive design, avatar upload, game with api
+3. Marki Lyons - Front-end design
